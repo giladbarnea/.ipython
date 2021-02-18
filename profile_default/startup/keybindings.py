@@ -1,3 +1,4 @@
+# https://github.com/mskar/setup/commit/2892fcee46f9f80ef7788f0749edc99daccc52f4/	← cool example
 # from IPython import get_ipython
 # from prompt_toolkit.enums import DEFAULT_BUFFER
 # from prompt_toolkit.keys import Keys
