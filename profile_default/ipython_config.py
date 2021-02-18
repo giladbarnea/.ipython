@@ -36,7 +36,7 @@
 
 ## A list of dotted module names of IPython extensions to load.
 #  Default: []
-# c.InteractiveShellApp.extensions = []
+c.InteractiveShellApp.extensions = ['copy_cell']
 
 ## DEPRECATED. Dotted module name of a single extra IPython extension to load.
 #  
@@ -69,7 +69,7 @@
 ## Should variables loaded at startup (by startup files, exec_lines, etc.) be
 #  hidden from tools like %who?
 #  Default: True
-# c.InteractiveShellApp.hide_initial_ns = True
+c.InteractiveShellApp.hide_initial_ns = False
 
 ## If True, IPython will not add the current working directory to sys.path. When
 #  False, the current working directory is added to sys.path, allowing imports of
@@ -204,7 +204,7 @@
 
 ## Whether to display a banner upon starting IPython.
 #  Default: True
-# c.TerminalIPythonApp.display_banner = True
+c.TerminalIPythonApp.display_banner = False
 
 ## Run the file referenced by the PYTHONSTARTUP environment
 #  See also: InteractiveShellApp.exec_PYTHONSTARTUP
@@ -241,7 +241,7 @@
 ## If a command or file is given via the command-line, e.g. 'ipython foo.py',
 #  start an interactive shell after executing the file or command.
 #  Default: False
-# c.TerminalIPythonApp.force_interact = False
+c.TerminalIPythonApp.force_interact = True
 
 ## Enable GUI event loop integration with any of ('asyncio', 'glut', 'gtk',
 #  'gtk2', 'gtk3', 'osx', 'pyglet', 'qt', 'qt4', 'qt5', 'tk', 'wx', 'gtk2',
@@ -482,7 +482,7 @@
 ## Enables rich html representation of docstrings. (This requires the docrepr
 #  module).
 #  Default: False
-# c.InteractiveShell.sphinxify_docstring = False
+c.InteractiveShell.sphinxify_docstring = True
 
 #  Default: True
 # c.InteractiveShell.wildcards_case_sensitive = True
@@ -513,7 +513,7 @@
 
 ## Autoformatter to reformat Terminal code. Can be `'black'` or `None`
 #  Default: None
-# c.TerminalInteractiveShell.autoformatter = None
+c.TerminalInteractiveShell.autoformatter = 'black'
 
 ## 
 #  See also: InteractiveShell.autoindent
@@ -714,7 +714,7 @@ c.TerminalInteractiveShell.highlighting_style = 'monokai'
 
 ## 
 #  See also: InteractiveShell.sphinxify_docstring
-# c.TerminalInteractiveShell.sphinxify_docstring = False
+c.TerminalInteractiveShell.sphinxify_docstring = True
 
 ## Automatically set the terminal title
 #  Default: True
@@ -729,7 +729,7 @@ c.TerminalInteractiveShell.highlighting_style = 'monokai'
 #  terminal supports true color, the following command should print 'TRUECOLOR'
 #  in orange: printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
 #  Default: False
-# c.TerminalInteractiveShell.true_color = False
+c.TerminalInteractiveShell.true_color = True
 
 #  See also: InteractiveShell.wildcards_case_sensitive
 # c.TerminalInteractiveShell.wildcards_case_sensitive = True

@@ -1,0 +1,23 @@
+# %alias copy echo '%l' | xclip -selection clipboard
+
+%alias code code %l
+%alias lsf ls -Flah
+
+%alias codex code "$SCRIPTS"/init.sh
+%alias codescripts code "$SCRIPTS"
+%alias codeman code "$MM"
+%alias codeipython code "$HOME"/.ipython
+
+%alias microx micro "$SCRIPTS"/init.sh
+%alias microman micro "$MM"
+
+%alias doctest python3 -m doctest %l
+
+# print('\x1b[2maliases:',
+# 'code',
+# 'lsf',
+# 'codex',
+# 'codescripts',
+# 'codeman',
+# 'doctest',
+# 'codeipython\x1b[0m\n',sep=', ') # newline because last to load on startup
