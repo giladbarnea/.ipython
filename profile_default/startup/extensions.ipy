@@ -1,30 +1,31 @@
+
 # __dark = lambda *strings: print(f'\x1b[2m{", ".join(map(str, strings))}\x1b[0m')
-__dark = lambda *args, **kwargs: None
-__loaded = []
-try:
-    %load_ext autoreload
-    %autoreload 2
-    __loaded.append('autoreload 2')
-except ModuleNotFoundError as e:
-    __dark(f'\tfailed loading extension autoreload', e.__class__.__qualname__, e)
+# __dark = lambda *args, **kwargs: None
+# __loaded = []
+# try:
+#     %load_ext autoreload
+#     %autoreload 2
+#     __loaded.append('autoreload 2')
+# except ModuleNotFoundError as e:
+#     __dark(f'\tfailed loading extension autoreload', e.__class__.__qualname__, e)
 
 try:
     %load_ext ipython_autoimport
-    __loaded.append('ipython_autoimport')
 except ModuleNotFoundError as e:
-    __dark(f'\tfailed loading extension ipython_autoimport', e.__class__.__qualname__, e)
-try:
-    %load_ext line_profiler
-    __loaded.append('line_profiler')
-except ModuleNotFoundError as e:
-    __dark(f'\tfailed loading extension line_profiler', e.__class__.__qualname__, e)
+    print(f'[WARN][extensions.ipy] failed loading extension ipython_autoimport', e.__class__.__qualname__, e)
+
+# try:
+#     %load_ext line_profiler
+#     __loaded.append('line_profiler')
+# except ModuleNotFoundError as e:
+#     __dark(f'\tfailed loading extension line_profiler', e.__class__.__qualname__, e)
 
 
-try:
-    %load_ext ipython_cells
-    __loaded.append('ipython_cells')
-except ModuleNotFoundError as e:
-    __dark(f'\tfailed loading extension ipython_cells', e.__class__.__qualname__, e)
+# try:
+#     %load_ext ipython_cells
+#     __loaded.append('ipython_cells')
+# except ModuleNotFoundError as e:
+#     __dark(f'\tfailed loading extension ipython_cells', e.__class__.__qualname__, e)
 
-__dark(f'extensions: {", ".join(__loaded)}')
-del __dark, __loaded
+# __dark(f'extensions: {", ".join(__loaded)}')
+# del __dark, __loaded
