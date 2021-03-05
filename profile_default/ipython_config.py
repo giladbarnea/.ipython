@@ -24,7 +24,7 @@
 ## Run the file referenced by the PYTHONSTARTUP environment variable at IPython
 #  startup.
 #  Default: True
-# c.InteractiveShellApp.exec_PYTHONSTARTUP = True
+c.InteractiveShellApp.exec_PYTHONSTARTUP = True
 
 ## List of files to run at IPython startup.
 #  Default: []
@@ -208,7 +208,7 @@ c.TerminalIPythonApp.display_banner = False
 
 ## Run the file referenced by the PYTHONSTARTUP environment
 #  See also: InteractiveShellApp.exec_PYTHONSTARTUP
-# c.TerminalIPythonApp.exec_PYTHONSTARTUP = True
+c.TerminalIPythonApp.exec_PYTHONSTARTUP = True
 
 ## List of files to run at IPython startup.
 #  See also: InteractiveShellApp.exec_files
@@ -220,8 +220,7 @@ c.TerminalIPythonApp.display_banner = False
 
 ## A list of dotted module names of IPython extensions to load.
 #  See also: InteractiveShellApp.extensions
-# c.TerminalIPythonApp.extensions = []
-
+c.TerminalIPythonApp.extensions = ['copy_cell']
 ## Path to an extra config file to load.
 #  See also: BaseIPythonApplication.extra_config_file
 # c.TerminalIPythonApp.extra_config_file = ''
@@ -251,7 +250,7 @@ c.TerminalIPythonApp.force_interact = True
 
 ## Should variables loaded at startup (by startup files, exec_lines, etc.)
 #  See also: InteractiveShellApp.hide_initial_ns
-# c.TerminalIPythonApp.hide_initial_ns = True
+c.TerminalIPythonApp.hide_initial_ns = False
 
 ## If True, IPython will not add the current working directory to sys.path.
 #  See also: InteractiveShellApp.ignore_cwd
