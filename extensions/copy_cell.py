@@ -1,5 +1,5 @@
 from IPython.core.magic import register_line_cell_magic
-import os
+
 
 
 def load_ipython_extension(ipython):
@@ -24,6 +24,7 @@ def load_ipython_extension(ipython):
                 return
             tocopy = line.strip()
         tocopy = tocopy.replace('"', r'\"')
-        os.system(f'echo "{tocopy}" | xclip -selection clipboard')
+        import subprocess as sp
+        sp.check_call(f'echo -n "{tocopy}" | xclip -selection clipboard',shell=True)
     
     # print('\x1b[2mmagic loaded: %copy\x1b[0m')

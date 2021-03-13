@@ -1,5 +1,4 @@
 # Configuration file for ipython.
-
 #------------------------------------------------------------------------------
 # InteractiveShellApp(Configurable) configuration
 #------------------------------------------------------------------------------
@@ -138,6 +137,7 @@ c.InteractiveShellApp.hide_initial_ns = False
 #  Default: False
 # c.BaseIPythonApplication.auto_create = False
 
+
 ## Whether to install the default config files into the profile dir. If a new
 #  profile is being created, and IPython contains config files for that profile,
 #  then they will be staged into the new directory.  Otherwise, default config
@@ -194,16 +194,18 @@ c.InteractiveShellApp.hide_initial_ns = False
 #------------------------------------------------------------------------------
 # TerminalIPythonApp(BaseIPythonApplication, InteractiveShellApp) configuration
 #------------------------------------------------------------------------------
+
 ## Execute the given command string.
 #  See also: InteractiveShellApp.code_to_run
 # c.TerminalIPythonApp.code_to_run = ''
 
 ## Whether to install the default config files into the profile dir.
 #  See also: BaseIPythonApplication.copy_config_files
-# c.TerminalIPythonApp.copy_config_files = False
+# c.TerminalIPythonApp.copy_config_files = True
 
 ## Whether to display a banner upon starting IPython.
 #  Default: True
+
 c.TerminalIPythonApp.display_banner = False
 
 ## Run the file referenced by the PYTHONSTARTUP environment
@@ -251,6 +253,7 @@ c.TerminalIPythonApp.force_interact = True
 ## Should variables loaded at startup (by startup files, exec_lines, etc.)
 #  See also: InteractiveShellApp.hide_initial_ns
 c.TerminalIPythonApp.hide_initial_ns = False
+
 
 ## If True, IPython will not add the current working directory to sys.path.
 #  See also: InteractiveShellApp.ignore_cwd
@@ -494,7 +497,7 @@ c.InteractiveShell.sphinxify_docstring = True
 #------------------------------------------------------------------------------
 # TerminalInteractiveShell(InteractiveShell) configuration
 #------------------------------------------------------------------------------
-## 
+# ** Note: IPython.terminal.interactiveshell.TerminalInteractiveShell is what runs when python3 -m IPython
 #  See also: InteractiveShell.ast_node_interactivity
 # c.TerminalInteractiveShell.ast_node_interactivity = 'last_expr'
 
@@ -729,6 +732,9 @@ c.TerminalInteractiveShell.sphinxify_docstring = True
 #  in orange: printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
 #  Default: False
 c.TerminalInteractiveShell.true_color = True
+
+
+
 
 #  See also: InteractiveShell.wildcards_case_sensitive
 # c.TerminalInteractiveShell.wildcards_case_sensitive = True
