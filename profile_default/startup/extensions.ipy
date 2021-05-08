@@ -2,12 +2,13 @@
 # __dark = lambda *strings: print(f'\x1b[2m{", ".join(map(str, strings))}\x1b[0m')
 # __dark = lambda *args, **kwargs: None
 # __loaded = []
-# try:
-#     %load_ext autoreload
-#     %autoreload 2
-#     __loaded.append('autoreload 2')
-# except ModuleNotFoundError as e:
-#     __dark(f'\tfailed loading extension autoreload', e.__class__.__qualname__, e)
+try:
+    %load_ext autoreload
+    %autoreload 3
+    print('%autoreload 3')
+    # __loaded.append('autoreload 2')
+except ModuleNotFoundError as e:
+    print('failed loading extension autoreload', e.__class__.__qualname__, e)
 
 try:
     %load_ext ipython_autoimport
