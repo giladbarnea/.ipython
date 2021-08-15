@@ -35,7 +35,7 @@ c.InteractiveShellApp.exec_PYTHONSTARTUP = True
 
 ## A list of dotted module names of IPython extensions to load.
 #  Default: []
-c.InteractiveShellApp.extensions = ['copy_cell']
+c.InteractiveShellApp.extensions = ['copy_magic']
 
 ## DEPRECATED. Dotted module name of a single extra IPython extension to load.
 #  
@@ -222,7 +222,7 @@ c.TerminalIPythonApp.exec_PYTHONSTARTUP = True
 
 ## A list of dotted module names of IPython extensions to load.
 #  See also: InteractiveShellApp.extensions
-c.TerminalIPythonApp.extensions = ['copy_cell']
+c.TerminalIPythonApp.extensions = ['copy_magic']
 ## Path to an extra config file to load.
 #  See also: BaseIPythonApplication.extra_config_file
 # c.TerminalIPythonApp.extra_config_file = ''
@@ -571,7 +571,7 @@ c.TerminalInteractiveShell.autoformatter = 'black'
 
 ## Shortcut style to use at the prompt. 'vi' or 'emacs'.
 #  Default: 'emacs'
-c.TerminalInteractiveShell.editing_mode = 'vi'
+c.TerminalInteractiveShell.editing_mode = 'emacs'
 
 ## Set the editor used by IPython (default to $EDITOR/vi/notepad).
 #  Default: 'micro'
