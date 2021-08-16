@@ -23,6 +23,8 @@ def get_justification(*items):
 
 
 def fmt_num(num, dec=2) -> str:
+    if dec == 0:
+        return f'{num:,}'
     return f'{num:,.{dec}f}'
 
 
@@ -59,12 +61,27 @@ class Stats:
     nanosec_avg = None
 
     def calculate(self, stmt: str, *, setup: str, timer, run_count: int, nanosec_sum: int, nanosec_avg: float, _globals=None):
-        print(f'Calculating variance...')
+        for duration in (
+                # 10_000_000_000,
+                5_000_000_000, # 10 s to 1 ms
+                         1_000_000_000, 500_000_000,
+                         100_000_000, 50_000_000,
+                         10_000_000, 5_000_000, 1_000_000):
+            if nanosec_sum < duration:
+                repetitions = duration // nanosec_sum
+                break
+        else:
+            print(f'Not calculating variance because one repetition one have taken {human_ns(nanosec_sum)} (cap is 10 seconds)')
+            return None
+
+        print(f'Calculating variance among {repetitions:,} repetitions...')
+
         self.nanosec_sum = nanosec_sum
         self.nanosec_avg = nanosec_avg
         deviation_sum = 0
-        for i in range(run_count):
-            nanosec = timeit(stmt, setup=setup, timer=timer, number=1, globals=_globals)
+
+        for i in range(repetitions):
+            nanosec = timeit(stmt, setup=setup, timer=timer, number=run_count, globals=_globals)
 
             if (self.fastest and nanosec < self.fastest.ns) or not self.fastest:
                 self.fastest = Most(nanosec, i)
@@ -191,12 +208,12 @@ class Experiment:
         return plt.plot(runs_pretty, self.nanosec_avgs)
 
 
-from pdbpp import rerun_and_break_on_exc
+from pdbpp import break_on_exc
 
 
 def load_ipython_extension(ipython):
     @register_line_cell_magic("measure")
-    @rerun_and_break_on_exc
+    @break_on_exc
     def linemagic(line: str, cell: str = None):
         if not line and not cell:
             return
