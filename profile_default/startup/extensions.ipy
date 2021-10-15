@@ -5,7 +5,6 @@
 try:
     %load_ext autoreload
     %autoreload 3
-    print('%autoreload 3')
     # __loaded.append('autoreload 2')
 except ModuleNotFoundError as e:
     print('failed loading extension autoreload', e.__class__.__qualname__, e)

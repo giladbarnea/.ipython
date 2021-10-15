@@ -24,5 +24,5 @@ def load_ipython_extension(ipython):
             tocopy = line.strip()
         tocopy = tocopy.replace('"', r'\"')
         import os
-        return os.system(f'echo -n "{tocopy}" | xclip -selection clipboard', shell=True)
+        return os.system(f'echo -n "{tocopy}" | xclip -selection clipboard')
 
