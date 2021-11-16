@@ -7,12 +7,14 @@ try:
     %autoreload 3
     # __loaded.append('autoreload 2')
 except ModuleNotFoundError as e:
-    print('failed loading extension autoreload', e.__class__.__qualname__, e)
+    import sys
+    print(f'failed loading extension autoreload: {e}', file=sys.stderr)
 
 try:
     %load_ext ipython_autoimport
 except ModuleNotFoundError as e:
-    print(f'[WARN][extensions.ipy] failed loading extension ipython_autoimport', e.__class__.__qualname__, e)
+    import sys
+    print(f'failed loading extension ipython_autoimport: {e}', file=sys.stderr)
 
 # try:
 #     %load_ext line_profiler
