@@ -2,21 +2,27 @@ import sys
 # __dark = lambda *strings: print(f'\x1b[2m{", ".join(map(str, strings))}\x1b[0m')
 # __dark = lambda *args, **kwargs: None
 # __loaded = []
+
 try:
     %load_ext autoreload
     %autoreload 3
 except ModuleNotFoundError as e:
-    print(f'failed loading extension autoreload: {e}', file=sys.stderr)
+    print(f'Failed loading extension autoreload: {e}', file=sys.stderr)
 
 try:
     %load_ext ipython_autoimport
 except ModuleNotFoundError as e:
-    print(f'failed loading extension ipython_autoimport: {e}', file=sys.stderr)
+    print(f'Failed loading extension ipython_autoimport: {e}', file=sys.stderr)
 
 try:
     %load_ext rich
 except ModuleNotFoundError as e:
-    print(f'failed loading extension rich: {e}', file=sys.stderr)
+    print(f'Failed loading extension rich: {e}', file=sys.stderr)
+
+try:
+    %autocall 1
+except Exception as e:
+    print(f'Failed %autocall 1. {type(e).__qualname__}: {e}', file=sys.stderr)
 
 # try:
 #     %load_ext line_profiler
