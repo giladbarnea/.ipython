@@ -35,7 +35,7 @@ c.InteractiveShellApp.exec_PYTHONSTARTUP = True
 
 ## A list of dotted module names of IPython extensions to load.
 #  Default: []
-c.InteractiveShellApp.extensions = ['copy_magic']
+c.InteractiveShellApp.extensions = ['copy_magic', 'pickle']
 
 ## DEPRECATED. Dotted module name of a single extra IPython extension to load.
 #  
