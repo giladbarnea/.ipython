@@ -654,7 +654,7 @@ c.TerminalInteractiveShell.extra_open_editor_shortcuts = True
 ## The name or class of a Pygments style to use for syntax
 #          highlighting. To see available styles, run `pygmentize -L styles`.
 #  Default: traitlets.Undefined
-c.TerminalInteractiveShell.highlighting_style = 'monokai'
+c.TerminalInteractiveShell.highlighting_style = 'monokai' # dracula, one-dark, material
 
 ## Override highlighting format for specific tokens
 #  Default: {}
@@ -715,6 +715,7 @@ c.TerminalInteractiveShell.highlighting_style = 'monokai'
 ## Class used to generate Prompt token for prompt_toolkit
 #  Default: 'IPython.terminal.prompts.Prompts'
 # c.TerminalInteractiveShell.prompts_class = 'IPython.terminal.prompts.Prompts'
+# c.TerminalInteractiveShell.prompts_class = 'IPython.terminal.prompts.ClassicPrompts'
 
 #  See also: InteractiveShell.quiet
 # c.TerminalInteractiveShell.quiet = False

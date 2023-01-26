@@ -1,9 +1,9 @@
+print('icopy')
 from IPython.core.magic import register_line_cell_magic
 
-
 def load_ipython_extension(ipython):
-    @register_line_cell_magic("copy")
-    def linecellmagic(line: str, cell: str=None):
+    @register_line_cell_magic("icopy")
+    def icopy(line: str, cell: str=None):
         if cell:
             if line:
                 print(f'line: ', line, '\ncell: ', cell)
@@ -24,5 +24,9 @@ def load_ipython_extension(ipython):
             tocopy = line.strip()
         tocopy = tocopy.replace('"', r'\"')
         import os
-        return os.system(f'echo -n "{tocopy}" | xclip -selection clipboard')
+        import sys
+        if sys.platform == 'darwin':
+            return os.system(f'echo -n "{tocopy}" | pbcopy')
+        else:
+            return os.system(f'echo -n "{tocopy}" | xclip -selection clipboard')
 
