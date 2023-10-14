@@ -3,26 +3,36 @@ import sys
 # __dark = lambda *args, **kwargs: None
 # __loaded = []
 
-try:
-    %load_ext autoreload
-    %autoreload 3
-except ModuleNotFoundError as e:
-    print(f'Failed loading extension autoreload: {e}', file=sys.stderr)
+# try:
+#     %load_ext autoreload
+#     %autoreload 3
+# except ModuleNotFoundError as e:
+#     print(f'Failed loading extension autoreload: {e}', file=sys.stderr)
 
 try:
     %load_ext ipython_autoimport
 except ModuleNotFoundError as e:
     print(f'Failed loading extension ipython_autoimport: {e}', file=sys.stderr)
 
-try:
-    %load_ext rich
-except ModuleNotFoundError as e:
-    print(f'Failed loading extension rich: {e}', file=sys.stderr)
+# try:
+#     %load_ext rich
+# except ModuleNotFoundError as e:
+#     print(f'Failed loading extension rich: {e}', file=sys.stderr)
 
 try:
     %autocall 1
 except Exception as e:
     print(f'Failed %autocall 1. {type(e).__qualname__}: {e}', file=sys.stderr)
+
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent.parent))
+%load_ext extensions.copy
+
+try:
+    %load_ext ipython_clipboard
+except ModuleNotFoundError as e:
+    print(f'Failed loading extension ipython_clipboard: {e}', file=sys.stderr)
 
 # try:
 #     %load_ext line_profiler

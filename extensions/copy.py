@@ -1,9 +1,8 @@
-print('icopy')
 from IPython.core.magic import register_line_cell_magic
 
 def load_ipython_extension(ipython):
-    @register_line_cell_magic("icopy")
-    def icopy(line: str, cell: str=None):
+    @register_line_cell_magic("copy")
+    def copy(line: str, cell: str=None):
         if cell:
             if line:
                 print(f'line: ', line, '\ncell: ', cell)
