@@ -1,51 +1,60 @@
 import sys
-# __dark = lambda *strings: print(f'\x1b[2m{", ".join(map(str, strings))}\x1b[0m')
-# __dark = lambda *args, **kwargs: None
-# __loaded = []
+from pathlib import Path
+
+try:
+    %load_ext dotenv
+    print(f"Loaded extension dotenv", file=sys.stderr)
+except ModuleNotFoundError as e:
+    pass
 
 # try:
-#     %load_ext autoreload
+# #     %load_ext autoreload
 #     %autoreload 3
 # except ModuleNotFoundError as e:
 #     print(f'Failed loading extension autoreload: {e}', file=sys.stderr)
 
 try:
     %load_ext ipython_autoimport
+    print(f"Loaded extension ipython_autoimport", file=sys.stderr)
 except ModuleNotFoundError as e:
-    print(f'Failed loading extension ipython_autoimport: {e}', file=sys.stderr)
+    print(f"Failed loading extension ipython_autoimport: {e}", file=sys.stderr)
 
-# try:
-#     %load_ext rich
-# except ModuleNotFoundError as e:
-#     print(f'Failed loading extension rich: {e}', file=sys.stderr)
+try:
+    %load_ext rich
+    print(f"Loaded extension rich", file=sys.stderr)
+except ModuleNotFoundError as e:
+    print(f"Failed loading extension rich: {e}", file=sys.stderr)
 
 try:
     %autocall 1
+    print(f"Loaded %autocall 1", file=sys.stderr)
 except Exception as e:
-    print(f'Failed %autocall 1. {type(e).__qualname__}: {e}', file=sys.stderr)
+    print(f"Failed %autocall 1. {type(e).__qualname__}: {e}", file=sys.stderr)
 
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent.parent))
+
+def ensure_ipython_dir_in_path():
+    parent = Path(__file__).parent
+    while not (ipython_dir := parent / ".ipython").is_dir() and parent != parent.root:
+        parent = parent.parent
+    if (
+        (ipython_dir / "extensions").is_dir()
+        and str(ipython_dir) not in sys.path
+        and str(ipython_dir) + "/" not in sys.path
+    ):
+        sys.path.append(str(ipython_dir))
+
+
+ensure_ipython_dir_in_path()
+
 %load_ext extensions.copy
+%load_ext extensions.ipickle
+%load_ext extensions.ijson
 
 try:
     %load_ext ipython_clipboard
+    print(f"Loaded extension IPythonClipboard", file=sys.stderr)
 except ModuleNotFoundError as e:
-    print(f'Failed loading extension ipython_clipboard: {e}', file=sys.stderr)
+    print(f"Failed loading extension IPythonClipboard: {e}", file=sys.stderr)
 
-# try:
-#     %load_ext line_profiler
-#     __loaded.append('line_profiler')
-# except ModuleNotFoundError as e:
-#     __dark(f'\tfailed loading extension line_profiler', e.__class__.__qualname__, e)
-
-
-# try:
-#     %load_ext ipython_cells
-#     __loaded.append('ipython_cells')
-# except ModuleNotFoundError as e:
-#     __dark(f'\tfailed loading extension ipython_cells', e.__class__.__qualname__, e)
-
-# __dark(f'extensions: {", ".join(__loaded)}')
-# del __dark, __loaded
+# %load_ext line_profiler
+# %load_ext ipython_cells

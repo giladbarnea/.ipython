@@ -36,7 +36,11 @@
 
 ## A list of dotted module names of IPython extensions to load.
 #  Default: []
-c.InteractiveShellApp.extensions = ['copy', 'pickle']
+c.InteractiveShellApp.extensions = [
+	# Use extensions.py, don't load here
+	# 'copy',
+	# 'ipickle',
+	]
 
 ## Dotted module name(s) of one or more IPython extensions to load.
 #  
