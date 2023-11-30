@@ -9,16 +9,16 @@ except ModuleNotFoundError:
 
 
 def load_ipython_extension(ipython):
-    print("Loaded extension copy")
+    print("Loaded extension icopy")
 
-    @register_line_cell_magic("copy")
-    def copy(line: str, cell: str = None):
+    @register_line_cell_magic("icopy")
+    def icopy(line: str, cell: str = None):
         """Copies current line or cell to clipboard.
 
         Usage:
-            %copy <line>
+            %icopy <line>
 
-            %%copy
+            %%icopy
             <cell>
         """
         import os
