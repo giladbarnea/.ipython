@@ -2,6 +2,7 @@ import json
 import os
 
 from IPython.core.magic import register_line_magic
+from pathlib import Path
 
 try:
     from rich.traceback import install
