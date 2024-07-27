@@ -20,7 +20,12 @@ except ModuleNotFoundError as e:
     print(f"Failed loading extension ipython_autoimport: {e}", file=sys.stderr)
 
 try:
-    %load_ext rich
+    # Don't use %load_ext rich because want to suppress .venv
+    from rich.pretty import install
+    from rich.traceback import install as tr_install
+
+    install()
+    tr_install(show_locals=True, suppress=(".venv",))
     print(f"Loaded extension rich", file=sys.stderr)
 except ModuleNotFoundError as e:
     print(f"Failed loading extension rich: {e}", file=sys.stderr)

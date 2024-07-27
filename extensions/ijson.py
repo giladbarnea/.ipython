@@ -1,8 +1,8 @@
 import json
 import os
+from pathlib import Path
 
 from IPython.core.magic import register_line_magic
-from pathlib import Path
 
 try:
     from rich.traceback import install
@@ -32,7 +32,7 @@ def load_ipython_extension(ipython):
         if not line:
             return
         expression = ipython.var_expand(line).strip()
-        print(f"\x1b[2mexpression: {expression!r} | line: {line!r}\x1b[0m")
+        print(f"\x1b[2m  expression:\n{expression}\n  line:\n{line}\x1b[0m")
         if not expression:
             return
         arguments: list = expression.split()

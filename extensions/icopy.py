@@ -1,13 +1,5 @@
 from IPython.core.magic import register_line_cell_magic
 
-try:
-    from rich.traceback import install
-
-    install(show_locals=True)
-except ModuleNotFoundError:
-    pass
-
-
 def load_ipython_extension(ipython):
     print("Loaded extension icopy")
 
