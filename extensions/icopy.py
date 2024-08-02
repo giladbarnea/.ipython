@@ -1,11 +1,28 @@
 from IPython.core.magic import register_line_cell_magic
 
+
 def load_ipython_extension(ipython):
     print("Loaded extension icopy")
 
+    def import_pyperclip():
+        try:
+            import pyperclip
+        except ImportError:
+            answer = input("Package 'pyperclip' is not installed; pip install it? y/n: ").strip()
+            if answer.lower() == "n":
+                print("icopy cannot proceed without 'pyperclip'")
+                return
+            import os
+
+            os.system("pip install pyperclip")
+            import pyperclip
+        return pyperclip
+
     @register_line_cell_magic("icopy")
     def icopy(line: str, cell: str = None):
-        """Copies current line or cell to clipboard.
+        """
+        Copies current line or cell to clipboard using pyperclip.
+        Dedents the text before copying.
 
         Usage:
             %icopy <line>
@@ -13,33 +30,21 @@ def load_ipython_extension(ipython):
             %%icopy
             <cell>
         """
-        import os
-        import sys
+        import textwrap
 
         line = line.strip()
         cell = cell.strip() if cell else None
         if cell:
             if line:
-                print(f"line: ", repr(line), "\ncell: ", repr(cell))
+                print("line: ", repr(line), "\ncell: ", repr(cell))
                 raise NotImplementedError("don't know how to handle both line and cell?")
-            lines = [line.strip() for line in cell.splitlines() if line]
-            tocopy = "\n".join(lines)
-            lines_len = len(lines)
-            # TODO:
-            #  1) keep indentation
-            #  2) keep quotes
-            if lines_len > 3:
-                print(f"\x1b[2mCopying str with {lines_len} newlines: {lines[0]}, ..., {lines[-1]}\x1b[0m")
-            else:
-                print(f'\x1b[2mCopying str with {lines_len} newlines: {", ".join(lines)}\x1b[0m')
+            dedented = textwrap.dedent(cell).strip()
         else:
             if not line:
+                print("Nothing to copy")
                 return
-            tocopy = line
-        tocopy = tocopy.replace('"', r"\"")
-        if sys.platform == "darwin":
-            command = f'echo -n "{tocopy}" | pbcopy'
-        else:
-            command = f'echo -n "{tocopy}" | xclip -selection clipboard'
-        print(f"\x1b[2mRunning command: {command!r}\x1b[0m")
-        return os.system(command)
+            dedented = textwrap.dedent(line).strip()
+        pyperclip = import_pyperclip()
+        if not pyperclip:
+            return
+        pyperclip.copy(dedented)
