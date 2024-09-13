@@ -25,7 +25,7 @@ try:
     from rich.traceback import install as tr_install
 
     install()
-    tr_install(show_locals=True, suppress=(".venv",))
+    tr_install(show_locals=True, suppress=(".venv",))  # theme='lovelace' is good light theme for jupyter
     print(f"Loaded extension rich", file=sys.stderr)
 except ModuleNotFoundError as e:
     print(f"Failed loading extension rich: {e}", file=sys.stderr)

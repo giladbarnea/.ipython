@@ -15,12 +15,6 @@ from typing import ForwardRef, Iterable, Union
 
 from IPython.core.magic import register_line_cell_magic
 
-try:
-    from rich.traceback import install
-
-    install(show_locals=True)
-except ModuleNotFoundError:
-    pass
 
 HDIV = "\033[90m|\033[0m"
 

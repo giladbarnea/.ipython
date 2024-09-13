@@ -4,13 +4,6 @@ from pathlib import Path
 
 from IPython.core.magic import register_line_magic
 
-try:
-    from rich.traceback import install
-
-    install(show_locals=True)
-except ModuleNotFoundError:
-    pass
-
 
 def load_ipython_extension(ipython):
     print("Loaded extension ipickle")
