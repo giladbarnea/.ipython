@@ -52,6 +52,7 @@ def ensure_ipython_dir_in_path():
 
 
 ensure_ipython_dir_in_path()
+del ensure_ipython_dir_in_path
 
 %load_ext extensions.icopy
 %load_ext extensions.ipickle
