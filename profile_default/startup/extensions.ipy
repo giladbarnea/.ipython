@@ -21,12 +21,14 @@ except ModuleNotFoundError as e:
 
 try:
     # Don't use %load_ext rich because want to suppress .venv
-    from rich.pretty import install
-    from rich.traceback import install as tr_install
+    from rich.pretty import install as pretty_install
+    from rich.traceback import install as traceback_install
 
-    install()
-    tr_install(show_locals=True, suppress=(".venv",))  # theme='lovelace' is good light theme for jupyter
+    pretty_install()
+    traceback_install(show_locals=True, suppress=(".venv",))  # theme='lovelace' is good light theme for jupyter
     print(f"Loaded extension rich", file=sys.stderr)
+    del pretty_install
+    del traceback_install
 except ModuleNotFoundError as e:
     print(f"Failed loading extension rich: {e}", file=sys.stderr)
 
